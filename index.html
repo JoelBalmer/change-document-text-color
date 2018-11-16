@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style type="text/css">
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    div * {
+      margin: 5px;
+    }
+  </style>
+  <script type="application/javascript">
+    function onFailure(error) {
+      alert("An error has occurred. Error: " + error);
+    }
+
+    function onSuccess() {
+      google.script.host.close();
+    }
+
+    function submitted(event) {
+      var color = document.getElementById('color-input').value;
+      google.script.run
+        .withSuccessHandler(onSuccess)
+        .withFailureHandler(onFailure)
+        .changeTextColor(color);
+    }
+  </script>
+</head>
+
+<body>
+  <div>
+    <label for="body">
+      Choose a colour
+    </label>
+    </br>
+    <input type="color" id="color-input" name="color" value="#ff0000" />
+    </br>
+    </br>
+    <label for="body">
+      Update document
+    </label>
+    </br>
+    <button type="button" onClick="submitted();" name='submit-button'>
+      Submit
+    </button>
+  </div>
+</body>
+
+</html>
