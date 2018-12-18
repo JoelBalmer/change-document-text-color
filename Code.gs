@@ -2,11 +2,15 @@
  * In the menu, head to Add-ons > Change document text colour > Choose colour. From the sidebar, choose your colour (the default is red), and when ready click Submit. The sidebar will close when your document has been updated.
  */
 
-function onOpen() {
+function onOpen(e) {
   SlidesApp.getUi()
-    .createMenu("Sidebar")
+    .createAddonMenu()
     .addItem("Choose colour", "openSidebar")
     .addToUi();
+}
+
+function onInstall(e) {
+  onOpen(e);
 }
 
 function openSidebar() {
